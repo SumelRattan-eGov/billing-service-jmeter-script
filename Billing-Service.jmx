@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Billing-Service" enabled="true">
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Http URL/API Test" enabled="true">
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">0</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="taxheads/_search" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;RequestInfo&quot;: {&#xd;
+    &quot;apiId&quot;: &quot;string&quot;,&#xd;
+    &quot;ver&quot;: &quot;string&quot;,&#xd;
+    &quot;ts&quot;: 0,&#xd;
+    &quot;action&quot;: &quot;string&quot;,&#xd;
+    &quot;did&quot;: &quot;string&quot;,&#xd;
+    &quot;key&quot;: &quot;string&quot;,&#xd;
+    &quot;msgId&quot;: &quot;string&quot;,&#xd;
+    &quot;requesterId&quot;: &quot;string&quot;,&#xd;
+    &quot;authToken&quot;: &quot;${authToken_amritsar}&quot;&#xd;
+  }&#xd;
+ }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/billing-service/taxheads/_search?tenantId=pb.amritsar&amp;businessService=PT</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="taxheads/_search" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="taxperiods/_search" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;RequestInfo&quot;: {&#xd;
+    &quot;apiId&quot;: &quot;string&quot;,&#xd;
+    &quot;ver&quot;: &quot;string&quot;,&#xd;
+    &quot;ts&quot;: 0,&#xd;
+    &quot;action&quot;: &quot;string&quot;,&#xd;
+    &quot;did&quot;: &quot;string&quot;,&#xd;
+    &quot;key&quot;: &quot;string&quot;,&#xd;
+    &quot;msgId&quot;: &quot;string&quot;,&#xd;
+    &quot;requesterId&quot;: &quot;string&quot;,&#xd;
+    &quot;authToken&quot;: &quot;${authToken_default}&quot;&#xd;
+  }&#xd;
+ }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/billing-service/taxperiods/_search?tenantId=pb.amritsar&amp;service=PT</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="taxperiods/_search" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="businessservices/_search" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;RequestInfo&quot;: {&#xd;
+    &quot;apiId&quot;: &quot;string&quot;,&#xd;
+    &quot;ver&quot;: &quot;string&quot;,&#xd;
+    &quot;ts&quot;: 0,&#xd;
+    &quot;action&quot;: &quot;string&quot;,&#xd;
+    &quot;did&quot;: &quot;string&quot;,&#xd;
+    &quot;key&quot;: &quot;string&quot;,&#xd;
+    &quot;msgId&quot;: &quot;string&quot;,&#xd;
+    &quot;requesterId&quot;: &quot;string&quot;,&#xd;
+    &quot;authToken&quot;: &quot;${authToken_default}&quot;&#xd;
+  }&#xd;
+ }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/billing-service/businessservices/_search?tenantId=pb.amritsar&amp;businessService=PT</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="businessservices/_search" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="demand/_create" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;RequestInfo&quot;: {&#xd;
+        &quot;apiId&quot;: &quot;emp&quot;,&#xd;
+        &quot;ver&quot;: &quot;1.0&quot;,&#xd;
+        &quot;ts&quot;: 1234,&#xd;
+        &quot;action&quot;: &quot;create&quot;,&#xd;
+        &quot;did&quot;: &quot;1&quot;,&#xd;
+        &quot;key&quot;: &quot;abcdkey&quot;,&#xd;
+        &quot;msgId&quot;: &quot;20170310130900&quot;,&#xd;
+        &quot;authToken&quot;: &quot;1b77d3a7-2535-4e63-8331-89a603c68bbd&quot;,&#xd;
+        &quot;userInfo&quot;: {&#xd;
+            &quot;id&quot;: 435,&#xd;
+            &quot;userName&quot;: &quot;ghanshyam&quot;,&#xd;
+            &quot;name&quot;: &quot;ghanshyam&quot;,&#xd;
+            &quot;type&quot;: &quot;EMPLOYEE&quot;,&#xd;
+            &quot;mobileNumber&quot;: &quot;9999405321&quot;,&#xd;
+            &quot;emailId&quot;: &quot;&quot;,&#xd;
+            &quot;roles&quot;: [&#xd;
+                {&#xd;
+                    &quot;name&quot;: &quot;Super User&quot;,&#xd;
+                    &quot;code&quot;: &quot;SUPERUSER&quot;&#xd;
+                }&#xd;
+            ],&#xd;
+            &quot;tenantId&quot;: &quot;pb.amritsar&quot;,&#xd;
+            &quot;uuid&quot;: &quot;cb94b439-cad4-4d54-9529-c87eb3ce4002&quot;&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;Demands&quot;: [&#xd;
+        {&#xd;
+            &quot;tenantId&quot;: &quot;pb.amritsar&quot;,&#xd;
+            &quot;consumerCode&quot;: &quot;amendment2&quot;,&#xd;
+            &quot;consumerType&quot;: &quot;PropertyTax&quot;,&#xd;
+            &quot;businessService&quot;: &quot;PT&quot;,&#xd;
+            &quot;taxPeriodFrom&quot;: &quot;1554076799000&quot;,&#xd;
+            &quot;taxPeriodTo&quot;: &quot;1585679399000&quot;,&#xd;
+            &quot;demandDetails&quot;: [&#xd;
+                {&#xd;
+                    &quot;taxHeadMasterCode&quot;: &quot;PT_TAX&quot;,&#xd;
+                    &quot;taxAmount&quot;: -100,&#xd;
+                    &quot;collectionAmount&quot;: 0&#xd;
+                }&#xd;
+            ],&#xd;
+            &quot;minimumAmountPayable&quot;: 1,&#xd;
+            &quot;additionalDetails&quot;: {&#xd;
+                &quot;HI&quot;: &quot;hi&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    ]&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/billing-service/demand/_create</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="demand/_create" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="x-pass-through-gateway" elementType="Header">
+                <stringProp name="Header.name">x-pass-through-gateway</stringProp>
+                <stringProp name="Header.value">false</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="demand/_search" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;RequestInfo&quot;: {&#xd;
+    &quot;apiId&quot;: &quot;Rainmaker&quot;,&#xd;
+    &quot;ver&quot;: &quot;.01&quot;,&#xd;
+    &quot;ts&quot;: 0,&#xd;
+    &quot;action&quot;: &quot;_get&quot;,&#xd;
+    &quot;did&quot;: &quot;1&quot;,&#xd;
+    &quot;key&quot;: &quot;&quot;,&#xd;
+    &quot;msgId&quot;: &quot;20170310130900|en_IN&quot;,&#xd;
+    &quot;authToken&quot;: &quot;${authToken_amritsar}&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/billing-service/demand/_search?tenantId=pb.amritsar&amp;businessService=PT&amp;consumerCode=shreyatest07</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="demand/_search" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="demand/_update" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;RequestInfo&quot;: {&#xd;
+    &quot;apiId&quot;: &quot;asset-services&quot;,&#xd;
+    &quot;ver&quot;: null,&#xd;
+    &quot;ts&quot;: null,&#xd;
+    &quot;action&quot;: null,&#xd;
+    &quot;did&quot;: null,&#xd;
+    &quot;key&quot;: null,&#xd;
+    &quot;msgId&quot;: null,&#xd;
+    &quot;authToken&quot;: &quot;${authToken_amritsar}&quot;,&#xd;
+    &quot;correlationId&quot;: &quot;dd114b8a-a9bb-4933-802a-b40484da487c&quot;,&#xd;
+    &quot;userInfo&quot;: {&#xd;
+      &quot;id&quot;: 12,&#xd;
+      &quot;uuid&quot;:&quot;4446312c-f21b-4cc3-9572-caca4e37225a&quot;,&#xd;
+      &quot;userName&quot;: null,&#xd;
+      &quot;name&quot;: null,&#xd;
+      &quot;type&quot;: null,&#xd;
+      &quot;mobileNumber&quot;: null,&#xd;
+      &quot;emailId&quot;: null,&#xd;
+      &quot;roles&quot;: null&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;Demands&quot;: [&#xd;
+     {&#xd;
+            &quot;id&quot;: &quot;ea500292-8598-423a-899b-4d6048b269bd&quot;,&#xd;
+            &quot;tenantId&quot;: &quot;pb.amritsar&quot;,&#xd;
+            &quot;consumerCode&quot;: &quot;test1901&quot;,&#xd;
+            &quot;consumerType&quot;: &quot;PropertyTax&quot;,&#xd;
+            &quot;businessService&quot;: &quot;PT&quot;,&#xd;
+            &quot;payer&quot;: null,&#xd;
+            &quot;taxPeriodFrom&quot;: 1536550377000,&#xd;
+            &quot;taxPeriodTo&quot;: 1537114377000,&#xd;
+            &quot;demandDetails&quot;: [&#xd;
+                {&#xd;
+                    &quot;id&quot;: &quot;10c1bc6f-7aa3-4930-a090-7169040b349b&quot;,&#xd;
+                    &quot;demandId&quot;: &quot;ea500292-8598-423a-899b-4d6048b269bd&quot;,&#xd;
+                    &quot;taxHeadMasterCode&quot;: &quot;PT_TAX&quot;,&#xd;
+                    &quot;taxAmount&quot;: -100,&#xd;
+                    &quot;collectionAmount&quot;: 0,&#xd;
+                    &quot;additionalDetails&quot;: null,&#xd;
+                    &quot;auditDetails&quot;: {&#xd;
+                        &quot;createdBy&quot;: &quot;11b0e02b-0145-4de2-bc42-c97b96264807&quot;,&#xd;
+                        &quot;lastModifiedBy&quot;: &quot;11b0e02b-0145-4de2-bc42-c97b96264807&quot;,&#xd;
+                        &quot;createdTime&quot;: 1573625272528,&#xd;
+                        &quot;lastModifiedTime&quot;: 1573625272528&#xd;
+                    },&#xd;
+                    &quot;tenantId&quot;: &quot;pb.amritsar&quot;&#xd;
+                },&#xd;
+                {&#xd;
+                    &quot;id&quot;: &quot;6d8dfa82-343f-49bf-9645-f7371768e417&quot;,&#xd;
+                    &quot;demandId&quot;: &quot;ea500292-8598-423a-899b-4d6048b269bd&quot;,&#xd;
+                    &quot;taxHeadMasterCode&quot;: &quot;PT_TIME_REBATE&quot;,&#xd;
+                    &quot;taxAmount&quot;: -100,&#xd;
+                    &quot;collectionAmount&quot;: 0,&#xd;
+                    &quot;additionalDetails&quot;: null,&#xd;
+                    &quot;auditDetails&quot;: {&#xd;
+                        &quot;createdBy&quot;: &quot;11b0e02b-0145-4de2-bc42-c97b96264807&quot;,&#xd;
+                        &quot;lastModifiedBy&quot;: &quot;11b0e02b-0145-4de2-bc42-c97b96264807&quot;,&#xd;
+                        &quot;createdTime&quot;: 1573625272528,&#xd;
+                        &quot;lastModifiedTime&quot;: 1573625272528&#xd;
+                    },&#xd;
+                    &quot;tenantId&quot;: &quot;pb.amritsar&quot;&#xd;
+                }&#xd;
+            ],&#xd;
+            &quot;auditDetails&quot;: {&#xd;
+                &quot;createdBy&quot;: &quot;11b0e02b-0145-4de2-bc42-c97b96264807&quot;,&#xd;
+                &quot;lastModifiedBy&quot;: &quot;11b0e02b-0145-4de2-bc42-c97b96264807&quot;,&#xd;
+                &quot;createdTime&quot;: 1573625272528,&#xd;
+                &quot;lastModifiedTime&quot;: 1573625272528&#xd;
+            },&#xd;
+            &quot;billExpiryTime&quot;: 0,&#xd;
+            &quot;additionalDetails&quot;: {&#xd;
+                &quot;HI&quot;: &quot;hi&quot;,&#xd;
+                &quot;hello&quot;:&quot;hello&quot;&#xd;
+            },&#xd;
+            &quot;minimumAmountPayable&quot;: 1,&#xd;
+            &quot;status&quot;: &quot;ACTIVE&quot;&#xd;
+        }&#xd;
+  ]&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/billing-service/demand/_update</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="demand/_update" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="v2/_search" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;RequestInfo&quot;: {&#xd;
+    &quot;apiId&quot;: &quot;string&quot;,&#xd;
+    &quot;ver&quot;: &quot;string&quot;,&#xd;
+    &quot;ts&quot;: 0,&#xd;
+    &quot;action&quot;: &quot;string&quot;,&#xd;
+    &quot;did&quot;: &quot;string&quot;,&#xd;
+    &quot;key&quot;: &quot;string&quot;,&#xd;
+    &quot;msgId&quot;: &quot;string&quot;,&#xd;
+    &quot;requesterId&quot;: &quot;string&quot;,&#xd;
+    &quot;authToken&quot;: &quot;${qa_sup}&quot;&#xd;
+  }&#xd;
+ }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/billing-service/bill/v2/_search?tenantId=pb.amritsar&amp;billId=bf102213-46b3-487a-97b4-4a0a3e81eb3f&amp;service=WS</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="v2/_search" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="bill/v2/_generate" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;RequestInfo&quot;: {&#xd;
+    &quot;apiId&quot;: &quot;string&quot;,&#xd;
+    &quot;ver&quot;: &quot;string&quot;,&#xd;
+    &quot;ts&quot;: 0,&#xd;
+    &quot;action&quot;: &quot;string&quot;,&#xd;
+    &quot;did&quot;: &quot;string&quot;,&#xd;
+    &quot;key&quot;: &quot;string&quot;,&#xd;
+    &quot;msgId&quot;: &quot;string&quot;,&#xd;
+    &quot;requesterId&quot;: &quot;string&quot;,&#xd;
+    &quot;authToken&quot;: &quot;${authToken_amritsar}&quot;,&#xd;
+    &quot;userInfo&quot; : {&#xd;
+    	&quot;uuid&quot; : &quot;uuid&quot;&#xd;
+    }&#xd;
+  }&#xd;
+ }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/billing-service/bill/v2/_generate?tenantId=pb.amritsar&amp;businessService=PT&amp;consumerCode=PT-local-14/03-1</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="bill/v2/_generate" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="v2/_fetchbill" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;RequestInfo&quot;: {&#xd;
+    &quot;apiId&quot;: &quot;string&quot;,&#xd;
+    &quot;ver&quot;: &quot;string&quot;,&#xd;
+    &quot;ts&quot;: 0,&#xd;
+    &quot;action&quot;: &quot;string&quot;,&#xd;
+    &quot;did&quot;: &quot;string&quot;,&#xd;
+    &quot;key&quot;: &quot;string&quot;,&#xd;
+    &quot;msgId&quot;: &quot;string&quot;,&#xd;
+    &quot;requesterId&quot;: &quot;string&quot;,&#xd;
+    &quot;authToken&quot;: &quot;${qa_amritsar}&quot;,&#xd;
+        &quot;userInfo&quot; : {&#xd;
+    	&quot;uuid&quot; : &quot;uuid&quot;&#xd;
+    }&#xd;
+  }&#xd;
+ }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/billing-service/bill/v2/_fetchbill?consumerCode=wesrtdre&amp;tenantId=pb&amp;businessService=PT</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="v2/_fetchbill" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
